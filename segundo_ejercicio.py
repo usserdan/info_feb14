@@ -71,18 +71,7 @@ class Sistema():
 
 sistema = Sistema()
 
-def validar_entero():
-    while True:
-        num = input("Introduce un número entero: ")
-        try:
-            int(num)
-            return int(num)
-        except ValueError:
-            print("La entrada no es un número entero válido, por favor inténtalo de nuevo.")
 
-# Ejemplo de uso
-#entero_valido = validar_entero()
-#print("Has introducido un número entero válido:", entero_valido)
 
 while True:
     
