@@ -41,3 +41,7 @@ class Sistema():
 
         self.__numero_pacientes = len(self.__lista_pacientes)
         
+    def ver_numPacientes(self):
+        return self.__numero_pacientes
+    
+        
