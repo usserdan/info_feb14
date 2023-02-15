@@ -38,10 +38,73 @@ class Sistema():
 
     def __init__(self):
         self.__lista_pacientes = []
-
         self.__numero_pacientes = len(self.__lista_pacientes)
+    
+    def ingresarPaciente(self):
         
-    def ver_numPacientes(self):
+        nombre = input("Ingrese el Nombre: ")
+        cedula = int(input("Ingrese la Cédula: "))
+        genero = input("Ingrese el Género: ")
+        servicio = input("Ingrese el Servicio: ")
+        
+        paciente = Paciente()
+        paciente.asignarNombre(nombre)
+        paciente.asignarCedula(cedula)
+        paciente.asignarGenero(genero)
+        paciente.asignarServicio(servicio)
+        
+        self.__lista_pacientes.append(paciente)
+        self.__numero_pacientes = len(self.__lista_pacientes)  
+
+    def ver_numeroPacientes(self):
         return self.__numero_pacientes
     
-        
+    def verDatosPacientes(self):
+        cedula = int(input("Ingrese la Cédula a buscar: "))
+        #Es for paciente y no cedula porque en la lista hay pacientes no numeros 
+        for paciente in self.__lista_pacientes: 
+            if cedula == paciente.verCedula():
+                print("Nombre: " + paciente.verNombre())
+                print("Cédula: " + str(paciente.verCedula()))
+                print("Género: " + paciente.verGenero())
+                print("Servicio: " + paciente.verServicio())   
+
+sistema = Sistema()
+
+def validar_entero():
+    while True:
+        num = input("Introduce un número entero: ")
+        try:
+            int(num)
+            return int(num)
+        except ValueError:
+            print("La entrada no es un número entero válido, por favor inténtalo de nuevo.")
+
+# Ejemplo de uso
+#entero_valido = validar_entero()
+#print("Has introducido un número entero válido:", entero_valido)
+
+while True:
+    
+    menu = int(input('''
+                 *** SELECCIONE UNA OPCION DEL MENU***
+                 1. Ingresar paciente.
+                 2. Numero de pacientes.
+                 3. Datos de paciente.
+                 4. Salir.
+                 ----> '''))
+    
+    if menu == 1:
+        sistema.ingresarPaciente()
+    
+    elif menu == 2:
+        print('El numero total de pacientes es: ' + str(sistema.ver_numeroPacientes()))
+    
+    elif menu == 3:
+        sistema.verDatosPacientes()
+    
+    elif menu == 4:
+        break
+    
+    else:
+        print('<<Opcion no valida>>')
